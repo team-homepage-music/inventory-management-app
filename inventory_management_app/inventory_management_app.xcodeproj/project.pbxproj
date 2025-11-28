@@ -6,17 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		94EBAF202EDA999900000005 /* inventory_management_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EBAF122EDA999900000003 /* inventory_management_appApp.swift */; };
+		94EBAF212EDA999900000006 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EBAF102EDA999900000001 /* ContentView.swift */; };
+		94EBAF222EDA999900000007 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EBAF112EDA999900000002 /* Item.swift */; };
+		94EBAF232EDA999900000008 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94EBAF132EDA999900000004 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		94EBAE3D2EDA242300B91175 /* inventory_management_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inventory_management_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94EBAF102EDA999900000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94EBAF112EDA999900000002 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		94EBAF122EDA999900000003 /* inventory_management_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inventory_management_appApp.swift; sourceTree = "<group>"; };
+		94EBAF132EDA999900000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		94EBAE3F2EDA242300B91175 /* inventory_management_app */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = inventory_management_app;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		94EBAE3A2EDA242300B91175 /* Frameworks */ = {
@@ -45,6 +48,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		94EBAE3F2EDA242300B91175 /* inventory_management_app */ = {
+			isa = PBXGroup;
+			children = (
+				94EBAF122EDA999900000003 /* inventory_management_appApp.swift */,
+				94EBAF102EDA999900000001 /* ContentView.swift */,
+				94EBAF112EDA999900000002 /* Item.swift */,
+				94EBAF132EDA999900000004 /* Assets.xcassets */,
+			);
+			path = inventory_management_app;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -60,9 +74,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				94EBAE3F2EDA242300B91175 /* inventory_management_app */,
 			);
 			name = inventory_management_app;
 			packageProductDependencies = (
@@ -110,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94EBAF232EDA999900000008 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +137,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/inventory_management_app",
 			);
 			outputFileListPaths = (
 			);
@@ -132,7 +145,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\"\n   if command -v swiftlint >/dev/null 2>&1; then\n     cd \"$SRCROOT\"\n     swiftlint --quiet\n     # あるいは明示的に設定ファイルを指定してもOK\n     # swiftlint --quiet --config \"$SRCROOT/.swiftlint.yml\" --path \"$SRCROOT\"\n   else\n     echo \"SwiftLint not installed; skipping lint\"\n   fi\n";
+			shellScript = "export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\"\ncd \"$SRCROOT\" || exit 0\n\nif ! command -v swiftlint >/dev/null 2>&1; then\n  echo \"SwiftLint not installed; skipping lint\"\n  exit 0\nfi\n\nTARGET_DIR=\"$SRCROOT/inventory_management_app\"\n\nif [ -z \"$(find \"$TARGET_DIR\" -name '*.swift' -not -path '*/.build/*' -print -quit)\" ]; then\n  echo \"SwiftLint: Swiftファイルがないためスキップ\"\n  exit 0\nfi\n\nif [ -f \"$SRCROOT/.swiftlint.yml\" ]; then\n  swiftlint lint --quiet --config \"$SRCROOT/.swiftlint.yml\" \"$TARGET_DIR\"\nelse\n  swiftlint lint --quiet \"$TARGET_DIR\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -141,6 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94EBAF212EDA999900000006 /* ContentView.swift in Sources */,
+				94EBAF222EDA999900000007 /* Item.swift in Sources */,
+				94EBAF202EDA999900000005 /* inventory_management_appApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
