@@ -52,6 +52,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94EBAE4A2EDA242400B91175 /* Build configuration list for PBXNativeTarget "inventory_management_app" */;
 			buildPhases = (
+				94EBAE4D2EDA251500B91175 /* ShellScript */,
 				94EBAE392EDA242300B91175 /* Sources */,
 				94EBAE3A2EDA242300B91175 /* Frameworks */,
 				94EBAE3B2EDA242300B91175 /* Resources */,
@@ -113,6 +114,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94EBAE4D2EDA251500B91175 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\"\n   if command -v swiftlint >/dev/null 2>&1; then\n     cd \"$SRCROOT\"\n     swiftlint --quiet\n     # あるいは明示的に設定ファイルを指定してもOK\n     # swiftlint --quiet --config \"$SRCROOT/.swiftlint.yml\" --path \"$SRCROOT\"\n   else\n     echo \"SwiftLint not installed; skipping lint\"\n   fi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		94EBAE392EDA242300B91175 /* Sources */ = {
