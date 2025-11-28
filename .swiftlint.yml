@@ -1,0 +1,61 @@
+# -----------------------------------------
+# SwiftLint Configuration
+# Book Collection App 向け推奨設定
+# -----------------------------------------
+
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+  - identifier_name
+  - nesting
+  - force_cast
+  - force_unwrapping
+
+# （厳しいルールを無効化して開発ストレスを減らす）
+# trailing_whitespace: 行末スペースは許容
+# line_length: 1行の長さ制限を無効化（SwiftUI の修飾子が長くなるため）
+# identifier_name: 変数名の長さ制限（i, x など）が厳しすぎるので無効化
+# nesting: View struct の入れ子が深くなりがちなため
+# force_cast, force_unwrapping は状況によって許容
+
+opt_in_rules:
+  - empty_count
+  - fatal_error_message
+  - first_where
+  - sorted_imports
+  - unowned_variable_capture
+  - closure_spacing
+  - multiline_arguments
+  - multiline_parameters
+
+# （積極的に使うとコードが綺麗になるルール）
+# empty_count: .count == 0 を isEmpty に統一
+# first_where: first(where:) を優先
+# sorted_imports: import の順序を整理
+# closure_spacing: クロージャの書き方が統一される
+# multiline_arguments: 複数引数の改行ルール
+# multiline_parameters: 複数パラメータの改行ルール
+
+included:
+  - BookCollectionManager
+
+excluded:
+  - Carthage
+  - Pods
+  - fastlane
+  - .build
+
+analyzer_rules:
+  - unused_import
+  - unused_private_declaration
+
+reporter: "xcode"
+
+# カスタムルール（任意、なくてもOK）
+custom_rules:
+  prefer_let_over_var:
+    included: "*.swift"
+    name: "Prefer let"
+    regex: "var "
+    message: "var より let を優先しましょう（不変性の維持）"
+    severity: warning
